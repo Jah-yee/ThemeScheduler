@@ -246,6 +246,11 @@ class ThemeScheduler(object):
         cls.next_change = None
         cls.day = None
 
+        # Guard against empty themes list (e.g., fresh install with no themes configured)
+        if not cls.themes:
+            cls.lowest = None
+            return
+
         # Try and find the closest time point to switch the theme
         closest = None
         lowest = None
