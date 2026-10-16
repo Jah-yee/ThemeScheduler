@@ -219,6 +219,7 @@ class ThemeScheduler(object):
     def init(cls, set_safe=False):
         """Initialize theme changer object."""
 
+        cls.lowest = None
         cls.busy = True
         cls.ready = False
         cls.set_safe = set_safe
@@ -329,6 +330,7 @@ class ThemeScheduler(object):
         Maybe this can be removed in the future.
         """
 
+        cls.lowest = None
         cls.busy = True
         update = True
         last_next = cls.next_change
@@ -351,6 +353,7 @@ class ThemeScheduler(object):
     def on_change(cls, seconds, now):
         """Change the theme and get the next time point to change themes."""
 
+        cls.lowest = None
         cls.busy = True
         # Change the theme
         if (
