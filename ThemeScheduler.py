@@ -208,6 +208,7 @@ class ThemeScheduler(object):
     dialog_open = False
     current_ui_theme = None
     current_command = None
+    lowest = None
 
     @classmethod
     def reset_msg_state(cls):
@@ -260,8 +261,7 @@ class ThemeScheduler(object):
             cls.next_change = closest
         elif lowest is not None:
             cls.next_change = lowest
-        if lowest is not None:
-            cls.lowest = lowest
+        cls.lowest = lowest
 
         if (cls.next_change.time == cls.lowest.time and seconds < cls.lowest.time):
             # The next change is the first of the next day
